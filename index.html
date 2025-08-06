@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Tanaman Lidah Buaya - KKN 03 UNUSIDA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a4d3a;
+            background: linear-gradient(135deg, #f0f9f4 0%, #e6f7ed 50%, #d4f1e0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #2d7a4f 0%, #1a4d3a 50%, #0f2e22 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(45, 122, 79, 0.1);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #2d7a4f;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .plant-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(45, 122, 79, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plant-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(45, 122, 79, 0.25);
+        }
+
+        .plant-info {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(45, 122, 79, 0.1);
+            box-shadow: 0 10px 30px rgba(45, 122, 79, 0.1);
+        }
+
+        .plant-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #1a4d3a;
+            margin-bottom: 1rem;
+        }
+
+        .botanical-name {
+            font-style: italic;
+            color: #2d7a4f;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1a4d3a;
+            text-align: justify;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(45, 122, 79, 0.1);
+            box-shadow: 0 10px 30px rgba(45, 122, 79, 0.08);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #1a4d3a;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #2d7a4f, #1a4d3a);
+            border-radius: 2px;
+        }
+
+        .points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .point-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.8rem;
+            border-radius: 15px;
+            border-left: 5px solid #2d7a4f;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .point-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 122, 79, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .point-item:hover::before {
+            left: 100%;
+        }
+
+        .point-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(45, 122, 79, 0.2);
+            border-left-color: #1a4d3a;
+        }
+
+        .point-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #2d7a4f, #1a4d3a);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 600;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .point-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1a4d3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .point-description {
+            color: #2d5a42;
+            line-height: 1.6;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .plant-icon {
+            font-size: 2rem;
+            color: #2d7a4f;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .plant-image {
+                height: 300px;
+            }
+
+            .plant-info {
+                padding: 1.5rem;
+            }
+
+            .plant-info h2 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .point-item {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .plant-info h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Tanaman Lidah Buaya</h1>
+            <p class="subtitle">Tanaman Ajaib dengan Segudang Manfaat untuk Kesehatan dan Kecantikan</p>
+        </header>
+
+        <section class="hero-section">
+            <div>
+                <img src="image/lidah buaya.jpeg" alt="Tanaman Lidah Buaya" class="plant-image">
+            </div>
+            <div class="plant-info">
+                <h2>Aloe Vera</h2>
+                <p class="botanical-name">Nama Ilmiah: Aloe barbadensis miller</p>
+                <p class="description">
+                    Lidah buaya adalah tanaman sukulen yang telah dikenal selama ribuan tahun karena khasiat 
+                    penyembuhannya yang luar biasa. Tanaman ini memiliki daun tebal berdaging yang mengandung 
+                    gel transparan kaya akan nutrisi dan senyawa bioaktif. Lidah buaya sangat mudah dirawat 
+                    dan dapat tumbuh subur di berbagai kondisi iklim, menjadikannya pilihan sempurna untuk 
+                    tanaman hias sekaligus apotek hidup di rumah Anda.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <div class="plant-icon">🌵</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Manfaat Lidah Buaya</h2>
+            <div class="points-grid">
+                <div class="point-item">
+                    <span class="point-number">1</span>
+                    <h3 class="point-title">Penyembuhan Luka dan Luka Bakar</h3>
+                    <p class="point-description">
+                        Gel lidah buaya memiliki sifat anti-inflamasi dan antimikroba yang dapat mempercepat 
+                        penyembuhan luka, luka bakar ringan, dan iritasi kulit lainnya secara alami.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">2</span>
+                    <h3 class="point-title">Pelembab Kulit Alami</h3>
+                    <p class="point-description">
+                        Kandungan air dan nutrisi dalam gel lidah buaya memberikan hidrasi mendalam pada kulit 
+                        tanpa meninggalkan rasa lengket, cocok untuk semua jenis kulit termasuk kulit sensitif.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">3</span>
+                    <h3 class="point-title">Anti-Aging dan Regenerasi Sel</h3>
+                    <p class="point-description">
+                        Vitamin C, E, dan beta-karoten dalam lidah buaya membantu melawan tanda-tanda penuaan 
+                        dini, merangsang produksi kolagen, dan mempercepat regenerasi sel kulit.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">4</span>
+                    <h3 class="point-title">Perawatan Rambut dan Kulit Kepala</h3>
+                    <p class="point-description">
+                        Gel lidah buaya dapat mengatasi ketombe, menenangkan kulit kepala yang iritasi, 
+                        dan memberikan nutrisi pada rambut untuk membuatnya lebih berkilau dan sehat.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">5</span>
+                    <h3 class="point-title">Detoksifikasi dan Pencernaan</h3>
+                    <p class="point-description">
+                        Jus lidah buaya dapat membantu membersihkan sistem pencernaan, mengurangi peradangan 
+                        usus, dan mendukung proses detoksifikasi alami tubuh.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">6</span>
+                    <h3 class="point-title">Boost Sistem Imun</h3>
+                    <p class="point-description">
+                        Kandungan polisakarida dan antioksidan dalam lidah buaya dapat membantu meningkatkan 
+                        sistem kekebalan tubuh dan melindungi dari berbagai penyakit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <div class="plant-icon">🌱</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Tips Perawatan Lidah Buaya</h2>
+            <div class="points-grid">
+                <div class="point-item">
+                    <span class="point-number">1</span>
+                    <h3 class="point-title">Penyiraman yang Tepat</h3>
+                    <p class="point-description">
+                        Siram lidah buaya hanya ketika tanah benar-benar kering. Biasanya 1-2 minggu sekali 
+                        sudah cukup. Hindari penyiraman berlebihan yang dapat menyebabkan akar membusuk.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">2</span>
+                    <h3 class="point-title">Pencahayaan Optimal</h3>
+                    <p class="point-description">
+                        Tempatkan lidah buaya di lokasi yang mendapat sinar matahari tidak langsung selama 
+                        6-8 jam per hari. Hindari sinar matahari langsung yang dapat membakar daun.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">3</span>
+                    <h3 class="point-title">Media Tanam Drainase Baik</h3>
+                    <p class="point-description">
+                        Gunakan campuran tanah kaktus atau buat sendiri dengan mencampur tanah biasa, 
+                        pasir, dan perlite dengan perbandingan 2:1:1 untuk drainase yang sempurna.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">4</span>
+                    <h3 class="point-title">Suhu dan Kelembaban Ideal</h3>
+                    <p class="point-description">
+                        Lidah buaya tumbuh optimal pada suhu 18-27°C dengan kelembaban rendah hingga sedang. 
+                        Lindungi dari suhu ekstrem dan angin kencang.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">5</span>
+                    <h3 class="point-title">Pemupukan Minimal</h3>
+                    <p class="point-description">
+                        Berikan pupuk cair untuk tanaman sukulen yang diencerkan setiap 2-3 bulan sekali 
+                        selama musim tumbuh (musim semi dan panas). Hindari pemupukan berlebihan.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">6</span>
+                    <h3 class="point-title">Repotting dan Propagasi</h3>
+                    <p class="point-description">
+                        Ganti pot setiap 2-3 tahun atau ketika tanaman sudah terlalu besar. Manfaatkan 
+                        anakan yang tumbuh di sekitar induk untuk memperbanyak tanaman.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <p>&copy; KKN 03 UNUSIDA 2025 . Dibuat dengan cinta untuk pecinta tumbuhan.</p>
+        </div>
+    </div>
+</body>
+</html>
